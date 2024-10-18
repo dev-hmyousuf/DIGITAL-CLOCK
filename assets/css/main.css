@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .box {
+      @apply p-4 text-3xl font-mono rounded-md text-gray-800 font-bold bg-gray-400 bg-opacity-35;
+    }
+  }
+  

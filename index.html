@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous"
+    />
+</head>
+<body class="bg-gradient-to-tr from-indigo-300 to-purple-700 flex flex-col justify-between items-center min-h-screen">
+    <header class="w-[90%] md:w-2/3 flex flex-col md:flex-row gap-4 my-2 bg-opacity-40 justify-between text-2xl items-center p-4 rounded-xl bg-white text-black">
+        <div>DIGITAL CLOCK <span class="text-sm">- BY H.M.YOUSUF</span></div>
+        <div class="">
+            <div class="inline-flex items-center gap-2">
+                <label for="switch-component-on" class="text-slate-600 text-sm cursor-pointer">24h</label>
+                <div class="relative inline-block w-12 h-6">
+                    <input id="switch-component-on" type="checkbox" class="peer hidden" />
+                    <label for="switch-component-on" class="block bg-gray-300 w-full h-full rounded-full cursor-pointer transition-colors duration-300 peer-checked:bg-green-500"></label>
+                    <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full border border-gray-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-green-500 cursor-pointer"></span>
+                </div>
+                <label for="switch-component-on" class="text-slate-600 text-sm cursor-pointer">12h</label>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container flex justify-center items-center flex-col h-full py-10 md:py-20">
+        <div class="fstCol flex flex-wrap gap-6 items-center justify-center">
+            <div class="flex justify-center items-center text-white font-mono flex-col">
+                <div id="hrs" class="box text-6xl md:text-8xl">00</div>
+                <label for="hrs" class="text-lg">Hours</label>
+            </div>
+            <div class="flex justify-center items-center text-white font-mono flex-col">
+                <div id="min" class="box text-6xl md:text-8xl">00</div>
+                <label for="min" class="text-lg">Minutes</label>
+            </div>
+            <div class="flex justify-center items-center text-white font-mono flex-col">
+                <div id="sec" class="box text-6xl md:text-8xl">00</div>
+                <label for="sec" class="text-lg">Seconds</label>
+            </div>
+            <div class="flex justify-center items-center text-white font-mono flex-col">
+                <div id="pm" class="box text-3xl md:text-4xl"></div>
+            </div>
+        </div>
+        <div class="scndCol mt-6 p-2 bg-gray-300 rounded-lg flex gap-2 text-center md:text-left">
+            <div class="day font-semibold text-lg"></div>
+            <div class="date font-semibold text-lg"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
