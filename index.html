@@ -58,6 +58,11 @@
 
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     <script defer>
+
+document.addEventListener("DOMContentLoaded", () => {
+    Notification.requestPermission();
+})
+        
         let hrs = document.getElementById("hrs");
 let min = document.getElementById("min");
 let sec = document.getElementById("sec");
@@ -65,6 +70,17 @@ let day = document.querySelector(".day");
 let date = document.querySelector(".date");
 let pm = document.querySelector("#pm");
 let switchComponent = document.getElementById("switch-component-on");
+    
+
+function setHourFormatOnLoad() {
+    const hourFormat = localStorage.getItem('hourFormat') || '24h'; 
+    if (hourFormat === '12h') {
+        switchComponent.checked = true; 
+    } else {
+        switchComponent.checked = false; 
+    }
+}
+
 
 function showTime() {
     const myDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -78,12 +94,19 @@ function showTime() {
     let period = hours >= 12 ? "PM" : "AM";
 
     if(switchComponent.checked) {
-        hours = hours % 12;
+        localStorage.setItem('hourFormat', '12h')
     } else {
-        hours = hours;
+        localStorage.setItem('hourFormat', '24h')
     }
 
+   
+    if(localStorage.getItem("hourFormat") == '12h') {
+        hours = hours % 12 || 12 ;
+    } 
     
+    if(localStorage.getItem("hourFormat") == '12h') {
+        hours = hours % 12 || 12;
+    }
     hours = hours ? hours : 12; 
 
     hrs.innerHTML = (hours < 10 ? "0" : "") + hours;
@@ -96,7 +119,23 @@ function showTime() {
     pm.innerHTML = period;
 }
 
+setHourFormatOnLoad()
+function sendNotification() {
+        const notification = new Notification("Time Update", {
+            body: `It's now ${hours}:${minutes < 10 ? '0' + minutes : minutes}!`,
+        });
+    }
 
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+
+    setInterval(() => {
+        const currentDate = new Date();
+        if (currentDate.getMinutes() === 0 && currentDate.getSeconds() === 0) {
+            sendNotification();
+        }
+    }, 1000)
 
 setInterval(showTime, 1000);
 
